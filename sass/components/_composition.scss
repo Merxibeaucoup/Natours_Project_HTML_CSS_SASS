@@ -1,0 +1,43 @@
+.composition {
+  // for images position
+  position: relative;
+  &__photo {
+    //  always define width of images with percentages
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.4);
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+    transition: all 0.2s linear;
+    // use this to get spaces between outline and image
+    outline-offset: 2rem;
+
+    &--p1 {
+      // start at left
+      left: 0;
+      top: -2rem;
+    }
+    &--p2 {
+      // start at right
+      right: 0;
+      top: 2rem;
+    }
+    &--p3 {
+      // 20% from the left
+      left: 20%;
+      top: 10rem;
+    }
+    &:hover {
+      outline: 1.5rem solid $color-primary;
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba($color-black, 0.55);
+      //   on hover on each image z-index is higher therefore it scales that image
+      z-index: 20;
+    }
+  }
+  // composition: hover composition__photo:not(:hover)
+  //   shrink not hovered images
+  &:hover &__photo:not(:hover) {
+    transform: scale(0.95);
+  }
+}
