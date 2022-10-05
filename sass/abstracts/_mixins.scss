@@ -1,0 +1,9 @@
+// appends a pseudo element after the element which clears the float
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    // clears float left and float right
+    clear: both;
+  }
+}

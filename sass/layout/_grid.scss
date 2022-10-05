@@ -1,0 +1,51 @@
+.row {
+  max-width: $grid-width;
+  margin: 0 auto;
+  // .row:not(:last-child)
+  // select everything except last child
+  &:not(:last-child) {
+    margin-bottom: $gutter-vertical;
+  }
+
+  @include clearfix;
+
+  //   select all elements from the class attribute that starts (^) with col-
+  [class^="col-"] {
+    float: left;
+
+    //assign margin right horizontal gutter to every colum except last column
+    &:not(:last-child) {
+      margin-right: $gutter-horizontal;
+    }
+  }
+  .col-1-of-2 {
+    // 100% of the width minus the horizontal gutter(6rem) then divide that by 2
+    width: calc((100% - #{$gutter-horizontal}) / 2);
+  }
+  .col-1-of-3 {
+    // 100% of the width minus the 2 horizontal gutter(6rem) then divide that by 3 for 3 columns
+    width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+  }
+  .col-2-of-3 {
+    // last two columns plus last gutter
+    width: calc(
+      2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal}
+    );
+  }
+  .col-1-of-4 {
+    // 100% of the width minus the 3 horizontal gutter(6rem) then divide that by 4 for 4 columns
+    width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+  }
+  .col-2-of-4 {
+    // last two columns plus last gutter
+    width: calc(
+      2 * ((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal}
+    );
+  }
+  .col-3-of-4 {
+    // last three columns plus last 2 gutters
+    width: calc(
+      3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + 2 * #{$gutter-horizontal}
+    );
+  }
+}
